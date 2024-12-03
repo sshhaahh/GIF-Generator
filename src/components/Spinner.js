@@ -2,9 +2,8 @@ import React from 'react'
 
 const Spinner = () => {
   return (
-    <div>
-        <div className='loader'></div>
-
+    <div className=''>
+        <div class="lds-dual-ring"></div>
     </div>
   )
 }

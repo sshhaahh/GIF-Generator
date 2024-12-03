@@ -17,7 +17,7 @@ const Random = () => {
         setGif(imageUrl);
         }catch(e){
             setLoading(false);
-            setFailed(e.message);
+            setFailed("Limit Exceeded");
         }
     }
 

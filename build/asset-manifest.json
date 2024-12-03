@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a166e12d.css",
+    "main.js": "/static/js/main.9490ea36.js",
+    "static/media/joe-woods-4Zaq5xY5M_c-unsplash.jpg": "/static/media/joe-woods-4Zaq5xY5M_c-unsplash.b02ab0f8e6fd434a0cce.jpg",
+    "index.html": "/index.html",
+    "main.a166e12d.css.map": "/static/css/main.a166e12d.css.map",
+    "main.9490ea36.js.map": "/static/js/main.9490ea36.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a166e12d.css",
+    "static/js/main.9490ea36.js"
+  ]
+}

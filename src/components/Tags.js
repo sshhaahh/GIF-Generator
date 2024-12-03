@@ -23,13 +23,13 @@ const Tags = () => {
         setGif(imageUrl);
         }catch(e){
             setLoading(false);
-            setFailed(e.message);
+            setFailed("Limit Exceeded");
         }
     }
 
     useEffect(()=>{
         fetchData();
-    },[fetchData])
+    },[])
 
     function generateHandler(){
         fetchData();
