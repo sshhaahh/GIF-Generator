@@ -1,9 +1,40 @@
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import Spinner from './Spinner';
+const API_KEY=process.env.REACT_APP_GIPPY_API_KEY;
 
 const Random = () => {
     const[gif,setGif]=useState('');
+    const[loading,setLoading]=useState(false);
+    const[failed,setFailed]=useState('');
+    async function fetchData(){
+        try{
+        setLoading(true)
+        const url=`https://api.giphy.com/v1/gifs/random?api_key=${API_KEY}`
+        const {data}= await axios.get(url);
+        setLoading(false)
+        const imageUrl=data.data.images.downsized_large.url;
+        setGif(imageUrl);
+        }catch(e){
+            setLoading(false);
+            setFailed(e.message);
+        }
+    }
+
+    useEffect(()=>{
+        fetchData();
+    },[])
+
+    function generateHandler(){
+        fetchData();
+    }
   return (
-    <div className='bg-[#7eeb7c] rounded-lg w-[40vw] mt-10 flex flex-col items-center shadow-lg'> 
-        <h1 className='bg-white rounded-lg my-3 w-[20vw] text-center text-xl font-bold py-2 shadow-lg'>Random Gif</h1>
-        <img src={gif} />
-        <button type="button" class="text-white bg-gradient-to-r from-green-40
+    <div className='bg-[#7eeb7c] border border-black rounded-lg w-[60vw] mt-4 flex flex-col items-center shadow-lg gap-y-3'> 
+        <h1 className=' rounded-lg  w-[20vw] text-center text-xl font-bold pt-2 underline'>Random Gif</h1>
+        {loading?(<Spinner/>):(<img src={gif} alt={failed} className=' text-center border shadow-lg rounded-lg w-[30vw] h-[50vh]' />)}
+        <button onClick={generateHandler} className='bg-green-300 rounded-lg py-2 w-3/4  mb-4 font-semibold text-lg shadow-lg cursor-pointer'>Generate</button>
+    </div>
+  )
+}
+
+export default Random
